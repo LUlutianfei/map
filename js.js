@@ -143,8 +143,9 @@ function context(id) {
 }
 
 
-function drags(obj, parentNode) {
-    var obj = document.getElementById(obj);
+
+function drags(objs, parentNode) {
+    var obj = document.getElementById(objs);
     if (arguments.length == 1) {
         var parentNode = window.self;
         var pWidth = parentNode.innerWidth,
@@ -186,6 +187,23 @@ function drags(obj, parentNode) {
             if (obj.offsetTop >= pHeight - oHeight) {
                 obj.style.top = pHeight - oHeight + 'px';
             };
+            const imgLD = [0, 240, 160, 160, 325, 360, 360, 350, 480, 600, 600, 400];
+            const imgLX = [150, 280, 320, 320, 375, 410, 420, 580, 640, 670, 680, 600];
+            const imgTD = [-300, -150, -170, -240, -260, -200, -290, -420, -360, -370, -450, -700];
+            const imgTX = [-200, -90, -80, -170, -170, -120, -170, -280, -210, -250, -330, -460];
+            console.log(obj.style.left.slice(0, 4));
+            if (obj.style.left.slice(0, 3) > imgLD[objs.slice(3) - 1] && obj.style.left.slice(0, 3) < imgLX[objs.slice(3) - 1] && obj.style.top.slice(0, 4) < imgTX[objs.slice(3) - 1] && obj.style.top.slice(0, 4) > imgTD[objs.slice(3) - 1]) {
+
+                console.log(obj.style.left.slice(0, 3) > imgLD[objs.slice(3) - 1]);
+                console.log(obj.style.left.slice(0, 3) < imgLX[objs.slice(3) - 1])
+                console.log(obj.style.top.slice(0, 4) < imgTX[objs.slice(3) - 1])
+                console.log(obj.style.top.slice(0, 4) > imgTD[objs.slice(3) - 1])
+
+                obj.style.display = 'none';
+                const id = document.getElementById('div' + objs.slice(3))
+                id.style.fill = colors[objs.slice(3)];
+                console.log(obj.display);
+            }
         });
         obj.addEventListener('touchend', function (event) {
             //obj.removeEventListener('touchmove');
