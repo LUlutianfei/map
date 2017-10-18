@@ -40,7 +40,7 @@ let curIndex = 0;
 
 function disappear() {
     //先声明一个异步请求对象
-   /* var xmlHttpReg = null;
+    var xmlHttpReg = null;
     if (window.ActiveXObject) { //如果是IE
         xmlHttpReg = new ActiveXObject("Microsoft.XMLHTTP");
     } else if (window.XMLHttpRequest) {
@@ -62,9 +62,7 @@ function disappear() {
                 document.getElementById("visit").innerHTML = '当前访问人数' + xmlHttpReg.responseText;
             }
         }
-
     }
-    */
     drags('img1', 'images');
     drags('img2', 'images');
     drags('img3', 'images');
@@ -77,8 +75,6 @@ function disappear() {
     drags('img10', 'images');
     drags('img11', 'images');
     drags('img12', 'images');
-
- }
 
     function drawImg() {
         for (let i = 0; i < 12; i++) {
@@ -197,4 +193,3 @@ function drags(obj, parentNode) {
         })
     });
 }
-
