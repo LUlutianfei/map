@@ -1,7 +1,7 @@
 window.addEventListener('load', disappear, false);
 
 
-const colors = {
+var colors = {
     1: '#e7dedb',
     2: '#ededee',
     3: '#f5fbe7',
@@ -16,7 +16,7 @@ const colors = {
     12: '#eaedff'
 };
 
-const text = {
+var text = {
     1: '阿拉善盟',
     2: '乌海市',
     3: '鄂尔多斯',
@@ -31,29 +31,31 @@ const text = {
     12: '呼伦贝尔盟'
 }
 
-const imgW = [256, 17 / 0.8, 152, 127, 59, 45, 121, 241, 126, 122, 107, 265]
+var imgW = [256, 17 / 0.8, 152, 127, 59, 45, 121, 241, 126, 122, 107, 265];
 
-const imgH = [242, 24 / 0.8, 125, 85, 98, 71, 127, 197, 154, 132, 128, 230]
+var imgH = [242, 24 / 0.8, 125, 85, 98, 71, 127, 197, 154, 132, 128, 230];
 
-let curIndex = 0;
+var curIndex = 0;
+
 // let num = Math.floor(Math.random() * 12 + 1);
 // console.log(num);
-function change(id) {
-    if (curIndex == 12) {
-        const ids = document.getElementById('div' + id);
-        ids.style.fill = '#ff0000';
-    }
-}
-
-function change1(id) {
-    if (curIndex == 12) {
-        const ids = document.getElementById('div' + id);
-        ids.style.fill = colors[id];
-        ids.style.stroke = '#ff03ff';
-    }
-}
 
 function disappear() {
+    function drawImg() {
+        for (var i = 0; i < 12; i++) {
+            var img = document.getElementById('img' + (i + 1));
+            img.src = text[i + 1] + '.png';
+            img.height = imgH[i] * 0.8;
+            img.width = imgW[i] * 0.8;
+            console.log(img);
+        }
+    }
+    drawImg();
+    for (var i = 1; i <= 12; i++) {
+        console.log(i);
+        var ids = document.getElementById('div' + i);
+        ids.style.fill = '#ffffff';
+    }
     //先声明一个异步请求对象
     var xmlHttpReg = null;
     if (window.ActiveXObject) { //如果是IE
@@ -78,6 +80,9 @@ function disappear() {
             }
         }
     }
+
+
+
     drags('img1', 'images');
     drags('img2', 'images');
     drags('img3', 'images');
@@ -90,31 +95,37 @@ function disappear() {
     drags('img10', 'images');
     drags('img11', 'images');
     drags('img12', 'images');
-
-    function drawImg() {
-        for (let i = 0; i < 12; i++) {
-            const img = document.getElementById('img' + (i + 1));
-            img.src = text[i + 1] + '.png';
-            img.height = imgH[i] * 0.8;
-            img.width = imgW[i] * 0.8;
-        }
-    }
-    drawImg();
-    for (let i = 1; i <= 12; i++) {
-        const ids = document.getElementById('div' + i);
-        ids.style.fill = '#ffffff';
-    }
-    // const ids = document.getElementById('div' + num);
+    // var ids = document.getElementById('div' + num);
     // ids.style.fill = '#ffffff';
     // ids.style.stroke = '#ffffff';
-    // const drag = document.getElementById('drag' + num);
+    // var drag = document.getElementById('drag' + num);
     // drag.style.display = "block";
 }
 
+function change(id) {
+    if (curIndex == 12) {
+        var ids = document.getElementById('div' + id);
+        ids.style.fill = '#ff0000';
+    }
+}
 
+function change1(id) {
+    if (curIndex == 12) {
+        var ids = document.getElementById('div' + id);
+        ids.style.fill = colors[id];
+        ids.style.stroke = '#ff03ff';
+    }
+}
 
 function allowDrop(ev) {
-    ev.preventDefault();
+
+    // ev.preventDefault();
+    if (ev && ev.preventDefault) {
+        ev.preventDefault();
+    } else {
+        window.event.returnValue = false; //注意加window
+    }
+
 }
 
 function drag(ev) {
@@ -122,7 +133,11 @@ function drag(ev) {
 }
 
 function drop(ev) {
-    ev.preventDefault();
+    if (ev && ev.preventDefault) {
+        ev.preventDefault();
+    } else {
+        window.event.returnValue = false; //注意加window
+    }
     var data = ev.dataTransfer.getData("Text");
     if (data.slice(3) == ev.target.id.slice(3)) {
         ev.target.appendChild(document.getElementById(data));
@@ -132,15 +147,15 @@ function drop(ev) {
 }
 
 function context(id) {
-    const ids = document.getElementById('context');
+    var ids = document.getElementById('context');
     ids.innerHTML = '';
-    const video = document.createElement('video');
+    var video = document.createElement('video');
     ids.appendChild(video);
     video.setAttribute("src", "sing.webm");
     video.style.width = '100%';
     video.style.height = '100%';
     video.autoplay = true;
-    const txt = document.getElementById('txt');
+    var txt = document.getElementById('txt');
     txt.innerHTML = text[id];
 }
 
@@ -189,10 +204,10 @@ function drags(objs, parentNode) {
             if (obj.offsetTop >= pHeight - oHeight) {
                 obj.style.top = pHeight - oHeight + 'px';
             };
-            const imgLD = [0, 240, 160, 160, 325, 360, 360, 350, 480, 600, 600, 400];
-            const imgLX = [150, 280, 320, 320, 375, 410, 420, 580, 640, 670, 680, 600];
-            const imgTD = [-300, -150, -170, -240, -260, -200, -290, -420, -360, -370, -450, -700];
-            const imgTX = [-200, -90, -80, -170, -170, -120, -170, -280, -210, -250, -330, -460];
+            var imgLD = [0, 240, 160, 160, 325, 360, 360, 350, 480, 600, 600, 400];
+            var imgLX = [150, 280, 320, 320, 375, 410, 420, 580, 640, 670, 680, 600];
+            var imgTD = [-300, -150, -170, -240, -260, -200, -290, -420, -360, -370, -450, -700];
+            var imgTX = [-200, -90, -80, -170, -170, -120, -170, -280, -210, -250, -330, -460];
             if (obj.style.left.slice(0, 3) > imgLD[objs.slice(3) - 1] && obj.style.left.slice(0, 3) < imgLX[objs.slice(3) - 1] && obj.style.top.slice(0, 4) < imgTX[objs.slice(3) - 1] && obj.style.top.slice(0, 4) > imgTD[objs.slice(3) - 1]) {
 
                 console.log(obj.style.left.slice(0, 3) > imgLD[objs.slice(3) - 1]);
@@ -201,14 +216,14 @@ function drags(objs, parentNode) {
                 console.log(obj.style.top.slice(0, 4) > imgTD[objs.slice(3) - 1])
 
                 obj.style.display = 'none';
-                const id = document.getElementById('div' + objs.slice(3))
+                var id = document.getElementById('div' + objs.slice(3))
                 id.style.fill = colors[objs.slice(3)];
                 console.log(obj.display);
             }
         });
-        obj.addEventListener('touchend', function (event) {
-            //obj.removeEventListener('touchmove');
-            //obj.removeEventListener('touchend');
-        })
+        // obj.addEventListener('touchend', function (event) {
+        //     //obj.removeEventListener('touchmove');
+        //     //obj.removeEventListener('touchend');
+        // })
     });
 }
