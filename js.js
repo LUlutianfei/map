@@ -62,8 +62,9 @@ function disappear() {
                 document.getElementById("visit").innerHTML = '当前访问人数' + xmlHttpReg.responseText;
             }
         }
-<<<<<<< HEAD
+
     }
+    */
     drags('img1', 'images');
     drags('img2', 'images');
     drags('img3', 'images');
@@ -76,9 +77,8 @@ function disappear() {
     drags('img10', 'images');
     drags('img11', 'images');
     drags('img12', 'images');
-=======
-    }*/
->>>>>>> ec5dd9d380f9f358c6d4dcd5ea31bcce67a0a752
+
+ }
 
     function drawImg() {
         for (let i = 0; i < 12; i++) {
@@ -145,7 +145,6 @@ function context(id) {
     const txt = document.getElementById('txt');
     txt.innerHTML = text[id];
 }
-<<<<<<< HEAD
 
 
 function drags(obj, parentNode) {
@@ -198,5 +197,4 @@ function drags(obj, parentNode) {
         })
     });
 }
-=======
->>>>>>> ec5dd9d380f9f358c6d4dcd5ea31bcce67a0a752
+
