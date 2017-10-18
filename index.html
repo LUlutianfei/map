@@ -5,10 +5,13 @@
   <title></title>
   <script src="js.js"></script>
   <link rel="stylesheet" href="style.css">
+  <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+
 </head>
 
 <body>
   <div id="context" class="video">
+    <p style="font-size:28px; text-align:center;" >爱“拼”才会赢</p>
     将右侧的碎片移动到完整地图上，看看你有多快！
   </div>
   <div id="txt" class="font"></div>
@@ -93,18 +96,20 @@
     </svg>
   </div>
   <div class="images" id="images">
-    <img id="img1" draggable="true" ondragstart="drag(event)" />
-    <img id="img2" draggable="true" ondragstart="drag(event)" />
-    <img id="img3" draggable="true" ondragstart="drag(event)" />
-    <img id="img4" draggable="true" ondragstart="drag(event)" />
-    <img id="img5" draggable="true" ondragstart="drag(event)" />
-    <img id="img6" draggable="true" ondragstart="drag(event)" />
-    <img id="img7" draggable="true" ondragstart="drag(event)" />
-    <img id="img8" draggable="true" ondragstart="drag(event)" />
-    <img id="img9" draggable="true" ondragstart="drag(event)" />
-    <img id="img10" draggable="true" ondragstart="drag(event)" />
-    <img id="img11" draggable="true" ondragstart="drag(event)" />
-    <img id="img12" draggable="true" ondragstart="drag(event)" />
+    <div class="img" id="images2"><img id="img2" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images3"><img id="img3" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images4"><img id="img4" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images5"><img id="img5" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images6"><img id="img6" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images7"><img id="img7" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images11"><img id="img11" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images1"><img id="img1" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images9"><img id="img9" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images10"><img id="img10" draggable="true" ondragstart="drag(event)" /></div>
+
+    <div class="img" id="images8"><img id="img8" draggable="true" ondragstart="drag(event)" /></div>
+    <div class="img" id="images12"><img id="img12" draggable="true" ondragstart="drag(event)" /></div>
+
   </div>
   <div id="visit" style="width:200px; height:20px;"></div>
   <!-- <div id="drag1" draggable="true" ondragstart="drag(event)">

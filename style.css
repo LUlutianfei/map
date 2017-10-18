@@ -6,6 +6,10 @@
     right: 20px;
 }
 
+.images div {
+    display: inline;
+}
+
 .video {
     padding: 10px 20px;
     border-radius: 20px;
@@ -36,5 +40,13 @@
         position: relative;
         width: 80%;
         margin: 0 auto;
+    }
+    .img {
+        width: 25%;
+        height: 200px;
+        float: left;
+    }
+    .images img {
+        position: absolute;
     }
 }

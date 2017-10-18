@@ -63,6 +63,18 @@ function disappear() {
             }
         }
     }
+    drags('img1', 'images');
+    drags('img2', 'images');
+    drags('img3', 'images');
+    drags('img4', 'images');
+    drags('img5', 'images');
+    drags('img6', 'images');
+    drags('img7', 'images');
+    drags('img8', 'images');
+    drags('img9', 'images');
+    drags('img10', 'images');
+    drags('img11', 'images');
+    drags('img12', 'images');
 
     function drawImg() {
         for (let i = 0; i < 12; i++) {
@@ -128,4 +140,56 @@ function context(id) {
     video.autoplay = true;
     const txt = document.getElementById('txt');
     txt.innerHTML = text[id];
+}
+
+
+function drags(obj, parentNode) {
+    var obj = document.getElementById(obj);
+    if (arguments.length == 1) {
+        var parentNode = window.self;
+        var pWidth = parentNode.innerWidth,
+            pHeight = parentNode.innerHeight;
+    } else {
+        var parentNode = document.getElementById(parentNode);
+        var pWidth = parentNode.clientWidth,
+            pHeight = parentNode.clientHeight;
+    }
+    obj.addEventListener('touchstart', function a(event) {
+        //当只有一个手指时              .
+        if (event.touches.length == 1) {
+            //禁止浏览器默认事
+            event.preventDefault();
+        };
+        var touch = event.targetTouches[0];
+        var disX = touch.clientX - obj.offsetLeft,
+            disY = touch.clientY - obj.offsetTop;
+        var oWidth = obj.offsetWidth,
+            oHeight = obj.offsetHeight;
+
+        obj.addEventListener('touchmove', function b(event) {
+            var touch = event.targetTouches[0];
+            obj.style.left = touch.clientX - disX + 'px';
+            obj.style.top = touch.clientY - disY + 'px';
+            //左侧
+            if (obj.offsetLeft <= 0) {
+                obj.style.left = 0;
+            };
+            //右侧
+            if (obj.offsetLeft >= pWidth - oWidth) {
+                obj.style.left = pWidth - oWidth + 'px';
+            };
+            //上面
+            // if (obj.offsetTop <= 0) {
+            //     obj.style.top = 0;
+            // };
+            //下面
+            if (obj.offsetTop >= pHeight - oHeight) {
+                obj.style.top = pHeight - oHeight + 'px';
+            };
+        });
+        obj.addEventListener('touchend', function (event) {
+            //obj.removeEventListener('touchmove');
+            //obj.removeEventListener('touchend');
+        })
+    });
 }
