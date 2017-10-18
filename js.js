@@ -1,5 +1,6 @@
 window.addEventListener('load', disappear, false);
 
+
 const colors = {
     1: '#e7dedb',
     2: '#ededee',
@@ -37,6 +38,20 @@ const imgH = [242, 24 / 0.8, 125, 85, 98, 71, 127, 197, 154, 132, 128, 230]
 let curIndex = 0;
 // let num = Math.floor(Math.random() * 12 + 1);
 // console.log(num);
+function change(id) {
+    if (curIndex == 12) {
+        const ids = document.getElementById('div' + id);
+        ids.style.fill = '#ff0000';
+    }
+}
+
+function change1(id) {
+    if (curIndex == 12) {
+        const ids = document.getElementById('div' + id);
+        ids.style.fill = colors[id];
+        ids.style.stroke = '#ff03ff';
+    }
+}
 
 function disappear() {
     //先声明一个异步请求对象
@@ -96,20 +111,7 @@ function disappear() {
     // drag.style.display = "block";
 }
 
-function change(id) {
-    if (curIndex == 12) {
-        const ids = document.getElementById('div' + id);
-        ids.style.fill = '#ff0000';
-    }
-}
 
-function change1(id) {
-    if (curIndex == 12) {
-        const ids = document.getElementById('div' + id);
-        ids.style.fill = colors[id];
-        ids.style.stroke = '#ff03ff';
-    }
-}
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -191,7 +193,6 @@ function drags(objs, parentNode) {
             const imgLX = [150, 280, 320, 320, 375, 410, 420, 580, 640, 670, 680, 600];
             const imgTD = [-300, -150, -170, -240, -260, -200, -290, -420, -360, -370, -450, -700];
             const imgTX = [-200, -90, -80, -170, -170, -120, -170, -280, -210, -250, -330, -460];
-            console.log(obj.style.left.slice(0, 4));
             if (obj.style.left.slice(0, 3) > imgLD[objs.slice(3) - 1] && obj.style.left.slice(0, 3) < imgLX[objs.slice(3) - 1] && obj.style.top.slice(0, 4) < imgTX[objs.slice(3) - 1] && obj.style.top.slice(0, 4) > imgTD[objs.slice(3) - 1]) {
 
                 console.log(obj.style.left.slice(0, 3) > imgLD[objs.slice(3) - 1]);

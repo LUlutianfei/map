@@ -22,6 +22,11 @@
     box-shadow: -5px -5px #c0c0c0;
 }
 
+.allMap {
+    width: 800px;
+    height: 600px;
+}
+
 .font {
     width: 400px;
     text-align: center;
