@@ -40,7 +40,7 @@ let curIndex = 0;
 
 function disappear() {
     //先声明一个异步请求对象
-    var xmlHttpReg = null;
+   /* var xmlHttpReg = null;
     if (window.ActiveXObject) { //如果是IE
         xmlHttpReg = new ActiveXObject("Microsoft.XMLHTTP");
     } else if (window.XMLHttpRequest) {
@@ -62,7 +62,7 @@ function disappear() {
                 document.getElementById("visit").innerHTML = '当前访问人数' + xmlHttpReg.responseText;
             }
         }
-    }
+    }*/
 
     function drawImg() {
         for (let i = 0; i < 12; i++) {
